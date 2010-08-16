@@ -58,6 +58,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
+    'coatl.registration',
+    'coatl.competition',
 )
 
 try:
