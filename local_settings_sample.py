@@ -2,6 +2,7 @@
 # Make one of these to configure Django to run on your current environment
 # Includes stuff like database passwords, so keep it out of version control
 
+SITE_ROOT = '/var/www/'
 
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
@@ -28,7 +29,7 @@ TIME_ZONE = 'America/New_York'
 
 # Absolute path to the directory that holds media.
 # Example: "/home/media/media.lawrence.com/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = SITE_ROOT + 'media/'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash if there is a path component (optional in other cases).
