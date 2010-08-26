@@ -1,0 +1,22 @@
+{% extends 'layout.html' %}
+
+{% block title %}Registration: Register your school{% endblock %}
+
+{% block content %}
+    <ol class="progress">
+        <li>Create an account</li>
+        <li class="current">Register your school</li>
+        <li>Register teams</li>
+    </ol>
+    <h1>Register your school</h1>
+    <p class="helptext">
+        Tell us about your school.
+    </p>
+    <form action="" method="post">
+        {% csrf_token %}
+        <table>
+            {{ form }}
+        </table>
+        <input type="submit" value="Register School">
+    </form>
+{% endblock %}

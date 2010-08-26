@@ -1,0 +1,31 @@
+{% extends 'layout.html' %}
+
+{% block title %}Registration: Register teams{% endblock %}
+
+{% block content %}
+    <ol class="progress">
+        <li>Create an account</li>
+        <li>Register your school</li>
+        <li class="current">Register teams</li>
+    </ol>
+    <h1>Register teams</h1>
+    <p class="helptext">
+        Each team must have at least four mathletes, but can have no more than six. You may register up to three teams.
+    </p>
+    <form action="" method="post">
+        {% csrf_token %}
+        {% for team in teams.forms %}
+        <div class="team-group" style='margin-bottom: 20px'>
+            <table>
+            {{ team }}
+            {% if team.nested %}
+            {% for formset in team.nested %}
+            {{ formset.as_table }}
+            {% endfor %}
+            {% endif %}
+            </table>
+        </div>
+        {% endfor %}
+        <input type="submit" value="Register Teams">
+    </form>
+{% endblock %}

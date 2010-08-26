@@ -1,5 +1,8 @@
 from django.conf.urls.defaults import *
+from coatl.registration import views
 
 urlpatterns = patterns('',
-    (r'^/', include('registration.urls')),
+    (r'^account', views.register_account),
+    (r'^school', views.register_school),
+    (r'^teams', views.register_teams),
 )
