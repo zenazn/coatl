@@ -68,7 +68,7 @@ class BaseTeamFormSet(forms_models.BaseInlineFormSet):
             pk_value = hash(form.prefix)
 
         form.nested = [
-            MathleteFormSet(data=self.data, instance=instance, prefix='MATHLETES_%s' % pk_value)
+            MathleteFormSet(data=self.data, instance=instance, prefix='MATHLETES-%s' % pk_value)
         ]
 
 TeamFormSet = inlineformset_factory(models.School, models.Team, formset=BaseTeamFormSet, max_num=3, can_delete=False, fields=('name', 'shortname', 'proctor', 'division'))
