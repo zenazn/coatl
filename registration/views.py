@@ -12,6 +12,8 @@ def register_account(request):
     if request.method == 'POST':
         form = forms.RegisterUserForm(request.POST)
         if form.is_valid():
+            u = form.cleaned_data
+            User.objects.create_user(u['username'], u['email'], u['password'])
             return HttpResponseRedirect("/")
     else:
         form = forms.RegisterUserForm()
