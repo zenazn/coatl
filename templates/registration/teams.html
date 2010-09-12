@@ -17,10 +17,37 @@
         {{ teams.management_form }}
         {% for team in teams.forms %}
         <div class="team-group" style='margin-bottom: 20px'>
-            {{ team.as_p }}
+            {% spaceless %}
+            {% for field in team %}
+            {% if field.is_hidden %}
+            {{ field }}
+            {% endif %}
+            {% endfor %}
+            <table>
+            {% for field in team %}
+                {% if not field.is_hidden %}
+                {% if field.errors %}
+                <tr>
+                    <td colspan="3">
+                        <ul>
+                            {{ field.errors }}
+                        </ul>
+                    </td>
+                </tr>
+                {% endif %}
+                <tr>
+                    <th>{{ field.label_tag }}</th>
+                    <td>{{ field }}</td>
+                    <td>{{ field.help_text }}</td>
+                </tr>
+                {% endif %}
+            {% endfor %}
+            </table>
             {% if team.nested %}
+            <h3>Team Members:</h3>
             <table>
             {% for formset in team.nested %}
+                {{ formset.management_form }}
                 {% for form in formset.forms %}
 
                 {# Table header #}
@@ -56,7 +83,11 @@
             {% endfor %}
             </table>
             {% endif %}
+            {% endspaceless %}
         </div>
+        {% if not forloop.last %}
+        <hr />
+        {% endif %}
         {% endfor %}
         <input type="submit" value="Register Teams">
     </form>
