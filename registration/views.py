@@ -14,7 +14,7 @@ def register_account(request):
         if form.is_valid():
             u = form.cleaned_data
             User.objects.create_user(u['username'], u['email'], u['password'])
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/registration/school")
     else:
         form = forms.RegisterUserForm()
     context = {
@@ -27,7 +27,7 @@ def register_school(request):
     if request.method == 'POST':
         form = forms.RegisterSchoolForm(request.POST)
         if form.is_valid():
-            return HttpResponseRedirect("/")
+            return HttpResponseRedirect("/registration/teams")
     else:
         form = forms.RegisterSchoolForm()
     context = {
