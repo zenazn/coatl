@@ -26,7 +26,7 @@ class School(models.Model):
     payment = models.FloatField(default=0)
     school_type = models.CharField(max_length=32, choices=SCHOOL_TYPES)
     
-    coaches = models.ManyToManyField(auth.User)
+    coaches = models.ManyToManyField(auth.User, blank=True)
 
     created = models.DateField(auto_now_add=True, verbose_name=_('created at'))
     lastupdate = models.DateField(auto_now=True, verbose_name=_('last updated at'))
@@ -76,9 +76,9 @@ class Mathlete(models.Model):
 
     def __str__(self):
         if self.alias:
-            return '%(first) "%(alias)" %(last)' % self
+            return '%(first)s "%(alias)s" %(last)s' % self.__dict__
         else:
-            return '%(first) %(last)' % self
+            return u'%(first)s %(last)s' % self.__dict__
     
     class Meta:
         db_table = 'mathletes'
