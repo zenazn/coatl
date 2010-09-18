@@ -1,0 +1,9 @@
+[
+    {"pk": 1, "model": "competition.round", "fields": {"group": "general", "name": "General 1"}},
+    {"pk": 2, "model": "competition.round", "fields": {"group": "general", "name": "General 2"}},
+    {"pk": 3, "model": "competition.round", "fields": {"group": "team", "name": "Team A"}},
+    {"pk": 4, "model": "competition.round", "fields": {"group": "team", "name": "Team B"}},
+    {"pk": 5, "model": "competition.round", "fields": {"group": "subject", "name": "Algebra"}},
+    {"pk": 6, "model": "competition.round", "fields": {"group": "subject", "name": "Geometry"}},
+    {"pk": 7, "model": "competition.round", "fields": {"group": "subject", "name": "Calculus"}}
+]
