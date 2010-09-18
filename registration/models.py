@@ -20,16 +20,19 @@ TEAM_DIVISIONS = (
 
 class School(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    address = models.TextField(null=True)
-    paid = models.BooleanField()
-    comment = models.TextField(null=True)
-    payment = models.FloatField()
+    address = models.TextField(null=True, blank=True)
+    paid = models.BooleanField(default=False)
+    comment = models.TextField(null=True, blank=True)
+    payment = models.FloatField(default=0)
     school_type = models.CharField(max_length=32, choices=SCHOOL_TYPES)
     
     coaches = models.ManyToManyField(auth.User)
 
     created = models.DateField(auto_now_add=True, verbose_name=_('created at'))
     lastupdate = models.DateField(auto_now=True, verbose_name=_('last updated at'))
+
+    def __str__(self):
+        return self.name
     
     class Meta:
         db_table = 'schools'
@@ -38,14 +41,17 @@ class Team(models.Model):
     name = models.CharField(max_length=255, unique=True)
     shortname = models.CharField(max_length=15, help_text=_('Nickname for the guts round heads-up'), unique=True)
     school = models.ForeignKey('School', db_column='schoolid')
-    comment = models.TextField(null=True)
-    proctor = models.CharField(max_length=255)
+    comment = models.TextField(null=True, blank=True)
+    proctor = models.CharField(max_length=255, blank=True)
     room = models.CharField(max_length=255)
 
     division = models.CharField(max_length=1, choices=TEAM_DIVISIONS)
 
     created = models.DateField(auto_now_add=True, verbose_name=_('created at'))
     lastupdate = models.DateField(auto_now=True, verbose_name=_('last updated at'))
+
+    def __str__(self):
+        return self.name
     
     class Meta:
         db_table = 'teams'
@@ -53,20 +59,26 @@ class Team(models.Model):
 class Mathlete(models.Model):
     first = models.CharField(max_length=60, verbose_name=_('first name'))
     last = models.CharField(max_length=60, verbose_name=_('last name'))
-    alias = models.CharField(max_length=60, null=True, verbose_name=_('nickname'))
+    alias = models.CharField(max_length=60, null=True, blank=True, verbose_name=_('nickname'))
     
     school = models.ForeignKey('School', db_column='schoolid')
-    team = models.ForeignKey('Team', db_column='teamid')
+    team = models.ForeignKey('Team', null=True, blank=True, db_column='teamid')
     
     round1 = models.ForeignKey('competition.Round', db_column='round1', related_name='mathelete_round1_set', verbose_name=_('first round'))
     round2 = models.ForeignKey('competition.Round', db_column='round2', related_name='mathelete_round2_set', verbose_name=_('second round'))
 
-    regstatus = models.BooleanField(verbose_name=_('registration status'))
+    regstatus = models.BooleanField(default=False,verbose_name=_('registration status'))
 
-    comment = models.TextField(null=True)
+    comment = models.TextField(null=True, blank=True)
     
     created = models.DateField(auto_now_add=True, verbose_name=_('created at'))
     lastupdate = models.DateField(auto_now=True, verbose_name=_('last updated at'))
+
+    def __str__(self):
+        if self.alias:
+            return '%(first) "%(alias)" %(last)' % self
+        else:
+            return '%(first) %(last)' % self
     
     class Meta:
         db_table = 'mathletes'
