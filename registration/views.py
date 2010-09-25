@@ -11,10 +11,13 @@ from django.contrib.auth.models import User
 # on your teams.
 
 def register_account(request):
+    if request.user.is_authenticated():
+        return HttpResponseRedirect("/registration/school")
     if request.method == 'POST':
         form = forms.RegisterUserForm(request.POST)
         if form.is_valid():
             d = form.cleaned_data
+            # Create and log in the user
             User.objects.create_user(d['username'], d['email'], d['password'])
             user = auth.authenticate(username=d['username'], password=d['password'])
             auth.login(request, user)
@@ -47,6 +50,10 @@ def register_school(request):
 
 @login_required
 def register_teams(request):
+    if request.user.school_set.count() == 0:
+        # No schools? Go and make one
+        return HttpResponseRedirect('/registration/school')
+
     if request.method == 'POST':
         teams = forms.TeamFormSet(request.POST)
         if teams.is_valid():

@@ -69,3 +69,5 @@ INSTALLED_APPS = (
     'coatl.competition',
 )
 
+# Login stuff
+LOGIN_REDIRECT_URL = '/registration/teams/'
