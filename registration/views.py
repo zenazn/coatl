@@ -29,7 +29,7 @@ def register_account(request):
     }
     context.update(csrf(request))
     return render_to_response("registration/account.html", context)
- 
+
 @login_required
 def register_school(request):
     if request.method == 'POST':
@@ -82,4 +82,4 @@ def register_teams(request):
     }
     context.update(csrf(request))
     return render_to_response("registration/teams.html", context)
- 
+
