@@ -33,15 +33,26 @@ def register_account(request):
 @login_required
 def register_school(request):
     if request.method == 'POST':
-        form = forms.RegisterSchoolForm(request.POST)
+        if request.user.school_set.count() > 0:
+            school = request.user.school_set.all()[0]
+            form = forms.RegisterSchoolForm(request.POST, instance=school)
+        else:
+            form = forms.RegisterSchoolForm(request.POST)
         if form.is_valid():
-            s = models.School(**form.cleaned_data)
-            s.save()
-            s.coaches.add(request.user)
-            s.save()
+            if school:
+                school.save()
+            else:
+                s = models.School(**form.cleaned_data)
+                s.save()
+                s.coaches.add(request.user)
+                s.save()
             return HttpResponseRedirect("/registration/teams")
     else:
-        form = forms.RegisterSchoolForm()
+        if request.user.school_set.count() > 0:
+            school = request.user.school_set.all()[0]
+            form = forms.RegisterSchoolForm(instance=school)
+        else:
+            form = forms.RegisterSchoolForm()
     context = {
         'form': form,
     }
@@ -54,12 +65,18 @@ def register_teams(request):
         # No schools? Go and make one
         return HttpResponseRedirect('/registration/school')
 
+    school = request.user.school_set.all()[0]
+
     if request.method == 'POST':
-        teams = forms.TeamFormSet(request.POST)
+        teams = forms.TeamFormSet(request.POST, instance=school)
         if teams.is_valid():
-            return HttpResponseRedirect("/")
+            teams.save_all(school=school)
+            return HttpResponseRedirect("/registration/teams")
     else:
-        teams = forms.TeamFormSet()
+        if school.team_set.count() > 0:
+            teams = forms.TeamFormSet(instance=school.team_set.all()[0])
+        else:
+            teams = forms.TeamFormSet()
     context = {
         'teams': teams,
     }

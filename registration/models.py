@@ -43,7 +43,7 @@ class Team(models.Model):
     school = models.ForeignKey('School', db_column='schoolid')
     comment = models.TextField(null=True, blank=True)
     proctor = models.CharField(max_length=255, blank=True)
-    room = models.CharField(max_length=255)
+    room = models.CharField(max_length=255, blank=True)
 
     division = models.CharField(max_length=1, choices=TEAM_DIVISIONS)
 
@@ -59,7 +59,7 @@ class Team(models.Model):
 class Mathlete(models.Model):
     first = models.CharField(max_length=60, verbose_name=_('first name'))
     last = models.CharField(max_length=60, verbose_name=_('last name'))
-    alias = models.CharField(max_length=60, null=True, blank=True, verbose_name=_('nickname'))
+    alias = models.CharField(max_length=60, null=True, blank=True, verbose_name=_('nickname'), help_text=_('Should we expect any other names written on the test?'))
     
     school = models.ForeignKey('School', db_column='schoolid')
     team = models.ForeignKey('Team', null=True, blank=True, db_column='teamid')
