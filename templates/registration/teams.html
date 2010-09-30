@@ -18,14 +18,11 @@
         {% for team in teams.forms %}
         <div class="team-group" style='margin-bottom: 20px'>
             {% spaceless %}
-            {% for field in team %}
-            {% if field.is_hidden %}
+            {% for field in team.hidden_fields %}
             {{ field }}
-            {% endif %}
             {% endfor %}
             <table>
-            {% for field in team %}
-                {% if not field.is_hidden %}
+            {% for field in team.visible_fields %}
                 {% if field.errors %}
                 <tr>
                     <td colspan="3">
@@ -40,7 +37,6 @@
                     <td>{{ field }}</td>
                     <td>{{ field.help_text }}</td>
                 </tr>
-                {% endif %}
             {% endfor %}
             </table>
             {% if team.nested %}
@@ -53,29 +49,23 @@
                 {# Table header #}
                 {% if forloop.first %}
                 <tr>
-                    {% for field in form %}
-                    {% if not field.is_hidden %}
+                    {% for field in form.visible_fields %}
                     <th>
                         {{ field.label }}
                     </th>
-                    {% endif %}
                     {% endfor %}
                 </tr>
                 {% endif %}
 
                 {# Hidden fields #}
-                {% for field in form %}
-                {% if field.is_hidden %}
+                {% for field in form.hidden_fields %}
                 {{field}}
-                {% endif %}
                 {% endfor %}
 
                 {# Fields #}
                 <tr>
-                    {% for field in form %}
-                    {% if not field.is_hidden %}
+                    {% for field in form.visible_fields %}
                     <td>{{ field }}</td>
-                    {% endif %}
                     {% endfor %}
                 </tr>
 
