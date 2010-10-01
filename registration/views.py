@@ -37,6 +37,7 @@ def register_school(request):
             school = request.user.school_set.all()[0]
             form = forms.RegisterSchoolForm(request.POST, instance=school)
         else:
+            school = None
             form = forms.RegisterSchoolForm(request.POST)
         if form.is_valid():
             if school:
