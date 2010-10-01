@@ -8,7 +8,8 @@ class SchoolAdmin(admin.ModelAdmin):
 admin.site.register(models.School, SchoolAdmin)
 
 class TeamAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('name', 'shortname', 'division', 'school', 'proctor', 'room', 'comment')
+    list_filter = ('division', 'school')
 
 admin.site.register(models.Team, TeamAdmin)
 
