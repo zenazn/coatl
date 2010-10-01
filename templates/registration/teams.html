@@ -62,6 +62,17 @@
                 {{field}}
                 {% endfor %}
 
+                {# Errors #}
+                {% if form.errors %}
+                <tr>
+                    <td colspan="{{form.visible_fields|length}}">
+                        <ul>
+                            {{ form.errors }}
+                        </ul>
+                    </td>
+                </tr>
+                {% endif %}
+
                 {# Fields #}
                 <tr>
                     {% for field in form.visible_fields %}

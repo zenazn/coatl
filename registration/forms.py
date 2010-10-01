@@ -55,7 +55,7 @@ class RegisterSchoolForm(forms.ModelForm):
         model = models.School
         fields = ('name', 'address', 'school_type',)
 
-MathleteFormSet = inlineformset_factory(models.Team, models.Mathlete, max_num=6, extra=6, can_delete=False, fields=('first', 'last', 'alias', 'round1', 'round2'))
+MathleteFormSet = inlineformset_factory(models.Team, models.Mathlete, max_num=6, extra=6, fields=('first', 'last', 'alias', 'round1', 'round2'))
 
 class BaseTeamFormSet(forms_models.BaseInlineFormSet):
     def add_fields(self, form, index):
