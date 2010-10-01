@@ -13,6 +13,7 @@ class TeamAdmin(admin.ModelAdmin):
 admin.site.register(models.Team, TeamAdmin)
 
 class MathleteAdmin(admin.ModelAdmin):
-    pass
+    list_display = ('first', 'last', 'alias', 'school', 'round1', 'round2', 'comment')
+    list_filter = ('round1', 'round2', 'school')
 
 admin.site.register(models.Mathlete, MathleteAdmin)
