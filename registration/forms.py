@@ -55,7 +55,14 @@ class RegisterSchoolForm(forms.ModelForm):
         model = models.School
         fields = ('name', 'address', 'school_type',)
 
-MathleteFormSet = inlineformset_factory(models.Team, models.Mathlete, max_num=6, extra=6, fields=('first', 'last', 'alias', 'round1', 'round2'))
+class BaseMathleteFormSet(forms_models.BaseInlineFormSet):
+    def clean(self):
+        num_mathletes = len(filter(bool, self.cleaned_data))
+        print num_mathletes
+        if num_mathletes > 6 or num_mathletes < 4:
+            raise forms.ValidationError, _("Each team must have between 4 and 6 mathletes")
+
+MathleteFormSet = inlineformset_factory(models.Team, models.Mathlete, formset=BaseMathleteFormSet, max_num=6, extra=6, fields=('first', 'last', 'alias', 'round1', 'round2'))
 
 class BaseTeamFormSet(forms_models.BaseInlineFormSet):
     def add_fields(self, form, index):
@@ -79,8 +86,6 @@ class BaseTeamFormSet(forms_models.BaseInlineFormSet):
             if hasattr(form, 'nested'):
                 for n in form.nested:
                     result = result and n.is_valid()
-                    # Allow between 4 and 6 members per team
-                    #result = result and 4 <= len(n) <= 6
 
         return result
 

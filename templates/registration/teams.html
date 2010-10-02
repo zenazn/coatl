@@ -44,6 +44,9 @@
             <table>
             {% for formset in team.nested %}
                 {{ formset.management_form }}
+                {% if formset.non_form_errors %}
+                {{ formset.non_form_errors }}
+                {% endif %}
                 {% for form in formset.forms %}
 
                 {# Table header #}
