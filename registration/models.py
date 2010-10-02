@@ -20,7 +20,7 @@ TEAM_DIVISIONS = (
 
 class School(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    address = models.TextField(null=True, blank=True)
+    address = models.CharField(max_length=255)
     paid = models.BooleanField(default=False)
     comment = models.TextField(null=True, blank=True)
     payment = models.FloatField(default=0)
