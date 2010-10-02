@@ -126,5 +126,5 @@ class BaseTeamFormSet(forms_models.BaseInlineFormSet):
                             o.school = school
                             o.save()
 
-TeamFormSet = inlineformset_factory(models.School, models.Team, formset=BaseTeamFormSet, max_num=3, can_delete=False, fields=('name', 'shortname', 'proctor', 'division'))
+TeamFormSet = inlineformset_factory(models.School, models.Team, formset=BaseTeamFormSet, max_num=3, fields=('name', 'shortname', 'proctor', 'division'))
 

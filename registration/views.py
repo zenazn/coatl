@@ -72,7 +72,7 @@ def register_teams(request):
         teams = forms.TeamFormSet(request.POST, instance=school)
         if teams.is_valid():
             teams.save_all(school=school)
-            return HttpResponseRedirect("/registration/teams")
+            return HttpResponseRedirect("/registration/done")
     else:
         if school.team_set.count() > 0:
             teams = forms.TeamFormSet(instance=school.team_set.all()[0])
@@ -84,3 +84,8 @@ def register_teams(request):
     context.update(csrf(request))
     return render_to_response("registration/teams.html", context)
 
+def index(request):
+    return render_to_response("registration/index.html", {})
+
+def done(request):
+    return render_to_response("registration/done.html", {})
