@@ -149,3 +149,25 @@ h1 {
   margin: 0;
   padding: 0;
 }
+
+
+/* Added ctj 10/1/10 */
+
+ol.progress {
+    text-align: center;
+    padding: 20px;
+}
+ol.progress li{
+    display: inline;
+    padding: 20px 0;
+    border: 2px solid #7a0001;
+}
+ol.progress li a{
+    padding: 20px;
+    color: white;
+    background-color: #7a0001;
+}
+ol.progress li.current a {
+    color: #7a0001;
+    background-color: white;
+}

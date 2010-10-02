@@ -4,9 +4,9 @@
 
 {% block content %}
     <ol class="progress">
-        <li>Create an account</li>
-        <li>Register your school</li>
-        <li class="current">Register teams</li>
+        <li><a href="/registration/account">Create an account</a></li>
+        <li><a href="/registration/school">Register your school</a></li>
+        <li class="current"><a href="/registration/teams">Register teams</a></li>
     </ol>
     <h1>Register teams</h1>
     <p class="helptext">
@@ -69,9 +69,7 @@
                 {% if form.errors %}
                 <tr>
                     <td colspan="{{form.visible_fields|length}}">
-                        <ul>
-                            {{ form.errors }}
-                        </ul>
+                        {{ form.errors }}
                     </td>
                 </tr>
                 {% endif %}
