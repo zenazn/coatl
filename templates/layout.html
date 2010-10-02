@@ -4,13 +4,93 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta name="description" content="The Harvard-MIT Mathematics Tournament (HMMT) is an annual math tournament for high school students, held at MIT and Harvard in alternate years." />
 
 	<title>{% block title %}The Harvard-MIT Mathematics Tournament{% endblock %}</title>
 
-    <!-- The beautiful CSS should probably go here. -->
+    <link rel="stylesheet" href="/media/style.css" type="text/css" />
+
 
 </head>
 <body>
-    {% block content %}Hello World.{% endblock %}
+    <div id="container">
+        <div id="contentcol">
+            <div id="content">
+                <h1 id="logo"><a href="/"><img src="/media/images/logo2010.png" alt="Harvard-MIT Mathematics Tournament 2010" /></a></h1>
+                {% block content %}Content goes here{% endblock %}
+            </div>
+        </div>
+        <div id="navcol">
+            <div id="nav">
+                <h2 id="nav_header"><a id="navigation" name="navigation">Navigation</a></h2>
+                <ul class="navlist">
+                    <li><h3><a href="./">HOME</a></h3></li>
+                    <li><h3><a href="http://hmmt.mit.edu/welcome">REGISTRATION</a></h3></li>
+                    <li><h3><a href="http://web.mit.edu/hmmt/www/november.shtml">November Information</a></h3></li>
+                    <li><h3><a href="http://hmmt.mit.edu/online/">Online Tournament</a></h3></li>
+                    <li><h3><a href="http://hmmt.mit.edu/masters">Masters Tournament</a></h3></li>
+                    <li>
+                        <h3>INTRO</h3>
+                        <ul>
+                            <li><a href="./history.shtml">History</a></li>
+                            <li><a href="./datafiles/coordinators/2010.shtml">Coordinators</a></li>
+                            <li><a href="./rules.shtml">Rules</a></li>
+                            <li><a href="./sponsors.shtml">Sponsors</a></li>
+                            <li><a href="./datafiles/schedules/2010.shtml">Schedule</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3><a href="./faq.shtml">FAQ</a> Highlights</h3>
+                        <ul>
+                            <li><a href="./faq.shtml#boston">About Boston</a></li>
+                            <li><a href="./faq.shtml#contest_difficulty">Difficulty</a></li>
+                            <li><a href="./faq.shtml#registration">Registration</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>PREVIOUS YEARS' <a href="./datafiles/">ARCHIVE</a></h3>
+                        <ul>
+                            <li><a href="./datafiles/results/">Results</a></li>
+                            <li><a href="./datafiles/problems/">Problems</a></li>
+                            <li><a href="./datafiles/solutions/">Solutions</a></li>
+                            <li><a href="./datafiles/photos/photos.shtml">Photos</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3><a href="./staff.shtml">JOINING THE STAFF</a></h3>
+                    </li>
+                    <li>
+                        <h3>CONTACT US</h3>
+                        <ul>
+                            <li><a href="mailto:hmmt-request%40mit.edu">hmmt-request@mit.edu</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <h3>Join Our Mailing List</h3>
+                        <ul>
+                            <li><a href="http://mailman.mit.edu/mailman/listinfo/hmmt-info">hmmt-info@mit.edu</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <p>
+                    <a href="http://www.harvard.edu/"><img src="/media/images/harvard-side.png" alt="Harvard" style="vertical-align: middle" /></a>
+                    <a href="http://web.mit.edu/"><img src="http://web.mit.edu/graphicidentity/interface/mit-greywhite-footer3.gif" alt="MIT" style="vertical-align: middle" /></a>
+                </p>
+            </div>
+        </div>
+    </div>
 </body>
+
+<!-- Google Analytics tracking code -->
+<script type="text/javascript">
+    var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+    document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+</script>
+<script type="text/javascript">
+    try {
+        var pageTracker = _gat._getTracker("UA-3055616-5");
+        pageTracker._trackPageview();
+    } catch(err) {}
+</script>
+
 </html>

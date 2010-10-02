@@ -1,0 +1,151 @@
+body {
+  margin: 0;
+  background-color: #7a0001;
+  font-family: Century Gothic, Trebuchet MS, sans-serif;
+  background-color: #FFFFFF;
+  background-image: url(/media/images/columnbg.png);
+  background-position: 80% 0%;
+  background-repeat: repeat-y;
+}
+
+p {
+  text-align: justify;
+}
+
+a:link {
+  color: #7a0001;
+}
+
+a:visited {
+  color: #7a0001;
+}
+
+a:link img, a:visited img {
+  border-style: none;
+}
+
+#navcol {
+  float: right;
+  width: 20%;
+  background-color: #7A0001;
+}
+
+#nav {
+  padding: 0.5em;
+  color: #FFFFFF;
+  font-size: 83.4%;
+}
+
+#nav a:link, #nav a:visited {
+  color: #DDDDDD;
+}
+
+#nav_header {
+  display: none;
+}
+
+.navlist {
+  margin: 0;
+  padding: 0;
+}
+
+.navlist ul {
+  margin: 0;
+  padding: 0 0 0 1em;
+}
+
+.navlist li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navlist h3 {
+  margin: .5em 0 0;
+}
+
+#contentcol {
+  float: left;
+  width: 80%;
+  background-color: #FFFFFF;
+}
+
+#content {
+  padding: 0.5em;
+  border-right: 1px solid #000000;
+}
+
+.clear {
+  clear: both;
+}
+
+#logo {
+  margin-top: 0;
+  text-align: center;
+}
+
+h1 {
+  font-family: Impact, sans-serif;
+  font-weight: normal;
+  text-align: center;
+}
+
+.signature {
+  text-align: right;
+}
+
+.sponsorslist {
+  position: relative;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.sponsorslist a {
+  text-decoration: none;
+}
+
+.sponsorslist li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  height: 150px;
+  float: left;
+  text-align: center;
+}
+
+.sponsorslist li span {
+  display: block;
+  margin: .5em 1em;
+  max-width: 16em;
+}
+
+#webmaster {
+  clear: both;
+  border-top: 1px solid black;
+  margin: 0 -.5em;
+  padding: .5em .5em 0 .5em;
+}
+
+#years {
+  float: right;
+  margin: .5em;
+  border: 1px solid #000000;
+  padding: .5em;
+  background-color: #EEEEEE;
+  font-size: 83.4%;
+}
+
+#years h2 {
+  margin: 0;
+}
+
+#years ul {
+  margin: 0;
+  padding: 0 0 0 1em;
+}
+
+#years li {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
