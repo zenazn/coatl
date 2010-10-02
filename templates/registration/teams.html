@@ -4,19 +4,23 @@
 
 {% block content %}
     <ol class="progress">
-        <li><a href="/registration/account">Create an account</a></li>
-        <li><a href="/registration/school">Register your school</a></li>
-        <li class="current"><a href="/registration/teams">Register teams</a></li>
+        <li><a href="registration/account">Create an account</a></li>
+        <li><a href="registration/school">Register your school</a></li>
+        <li class="current"><a href="registration/teams">Register teams</a></li>
     </ol>
     <h1>Register teams</h1>
     <p class="helptext">
-        Each team must have at least four mathletes, but can have no more than six. You may register up to three teams.
+      For our November competition, each team must have at least four mathletes, but no more than six. Any team that has fewer than four students will automatically be considered as individual registrants. If you are registering as an individual, just enter your name alone. For the November contest, there is only a single choice for the individual rounds (there are no subject tests). 
     </p>
+    {% if teams.errors %}
+    <p style="color: red">There are errors below. Please fix them. <strong>Your data has not yet been saved</strong>.</p>
+    {% endif %}
     <form action="" method="post">
         {% csrf_token %}
         {{ teams.management_form }}
         {% for team in teams.forms %}
         <div class="team-group" style='margin-bottom: 20px'>
+            <h3>Team {{ forloop.counter}}</h3>
             {% spaceless %}
             {% for field in team.hidden_fields %}
             {{ field }}

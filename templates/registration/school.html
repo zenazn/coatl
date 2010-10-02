@@ -4,13 +4,13 @@
 
 {% block content %}
     <ol class="progress">
-        <li><a href="/registration/account">Create an account</a></li>
-        <li class="current"><a href="/registration/school">Register your school</a></li>
-        <li><a href="/registration/teams">Register teams</a></li>
+        <li><a href="registration/account">Create an account</a></li>
+        <li class="current"><a href="registration/school">Register your school</a></li>
+        <li><a href="registration/teams">Register teams</a></li>
     </ol>
     <h1>Register your school</h1>
     <p class="helptext">
-        Tell us about your school.
+        Tell us about your school, even if you are registering as an individual. If you are homeschooled, indicate that below. 
     </p>
     <form action="" method="post">
         {% csrf_token %}

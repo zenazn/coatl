@@ -8,4 +8,5 @@ urlpatterns = patterns('',
     (r'^accounts/logout/$', 'django.contrib.auth.views.logout_then_login'),
     (r'^registration/', include('registration.urls')),
     (r'^admin/', include(admin.site.urls)),
+    (r'^$', 'registration.views.index'),
 )

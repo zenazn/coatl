@@ -12,7 +12,7 @@ from django.contrib.auth.models import User
 
 def register_account(request):
     if request.user.is_authenticated():
-        return HttpResponseRedirect("/registration/school")
+        return HttpResponseRedirect(BASE_URL_PATH + "registration/school")
     if request.method == 'POST':
         form = forms.RegisterUserForm(request.POST)
         if form.is_valid():
@@ -21,7 +21,7 @@ def register_account(request):
             User.objects.create_user(d['username'], d['email'], d['password'])
             user = auth.authenticate(username=d['username'], password=d['password'])
             auth.login(request, user)
-            return HttpResponseRedirect("/registration/school")
+            return HttpResponseRedirect(BASE_URL_PATH + "registration/school")
     else:
         form = forms.RegisterUserForm()
     context = {
@@ -47,7 +47,7 @@ def register_school(request):
                 s.save()
                 s.coaches.add(request.user)
                 s.save()
-            return HttpResponseRedirect("/registration/teams")
+            return HttpResponseRedirect(BASE_URL_PATH + "registration/teams")
     else:
         if request.user.school_set.count() > 0:
             school = request.user.school_set.all()[0]
@@ -64,7 +64,7 @@ def register_school(request):
 def register_teams(request):
     if request.user.school_set.count() == 0:
         # No schools? Go and make one
-        return HttpResponseRedirect('/registration/school')
+        return HttpResponseRedirect(BASE_URL_PATH + 'registration/school')
 
     school = request.user.school_set.all()[0]
 
@@ -72,10 +72,10 @@ def register_teams(request):
         teams = forms.TeamFormSet(request.POST, instance=school)
         if teams.is_valid():
             teams.save_all(school=school)
-            return HttpResponseRedirect("/registration/done")
+            return HttpResponseRedirect(BASE_URL_PATH + "registration/done")
     else:
         if school.team_set.count() > 0:
-            teams = forms.TeamFormSet(instance=school.team_set.all()[0])
+            teams = forms.TeamFormSet(instance=school)
         else:
             teams = forms.TeamFormSet()
     context = {

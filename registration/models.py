@@ -39,7 +39,7 @@ class School(models.Model):
 
 class Team(models.Model):
     name = models.CharField(max_length=255, unique=True)
-    shortname = models.CharField(max_length=15, help_text=_('Nickname for the guts round heads-up'), unique=True)
+    shortname = models.CharField(max_length=15, help_text=_('Nickname for the guts round scoreboard'), unique=True)
     school = models.ForeignKey('School', db_column='schoolid')
     comment = models.TextField(null=True, blank=True)
     proctor = models.CharField(max_length=255, blank=True)

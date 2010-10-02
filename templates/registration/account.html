@@ -4,13 +4,13 @@
 
 {% block content %}
     <ol class="progress">
-        <li class="current"><a href="/registration/account">Create an account</a></li>
-        <li><a href="/registration/school">Register your school</a></li>
-        <li><a href="/registration/teams">Register teams</a></li>
+        <li class="current"><a href="registration/account">Create an account</a></li>
+        <li><a href="registration/school">Register your school</a></li>
+        <li><a href="registration/teams">Register teams</a></li>
     </ol>
     <h1>Create an account</h1>
     <p class="helptext">
-        You will use this account to manage your school's information, and register teams and mathletes. Please ensure that you submit a valid email address that you check regularly, because this is our primary means of contacting you.
+        You will use this account to manage your school's information, and register teams and mathletes. Please ensure that you submit a valid email address that you check regularly, because this is our primary means of contacting you. 
     </p>
     <form action="" method="post">
         {% csrf_token %}
