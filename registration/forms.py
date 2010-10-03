@@ -15,13 +15,13 @@ class RegisterUserForm(forms.Form):
     registration process any form of email verification has been omitted.
     """
 
-    username = forms.CharField(max_length=30, min_length=3, label=_('username'))
-    first = forms.CharField(max_length=30, label=_('first name'))
-    last = forms.CharField(max_length=30, label=_('last name'))
-    email1 = forms.EmailField(label=_('email address'))
-    email2 = forms.EmailField(label=_('confirm email address'))
-    password1 = forms.CharField(label=_('password'), widget=forms.PasswordInput())
-    password2 = forms.CharField(label=_('confirm password'), widget=forms.PasswordInput())
+    username = forms.CharField(max_length=30, min_length=3, label=_('Username'))
+    first = forms.CharField(max_length=30, label=_('First Name'))
+    last = forms.CharField(max_length=30, label=_('Last Name'))
+    email1 = forms.EmailField(label=_('Email Address'))
+    email2 = forms.EmailField(label=_('Confirm Email Address'))
+    password1 = forms.CharField(label=_('Password'), widget=forms.PasswordInput())
+    password2 = forms.CharField(label=_('Confirm Password'), widget=forms.PasswordInput())
 
     def clean_username(self):
         try:
