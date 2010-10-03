@@ -4,17 +4,17 @@
 
 {% block content %}
     <ol class="progress">
-        <li><a href="registration/account">Create an account</a></li>
-        <li class="current"><a href="registration/school">Register your school</a></li>
-        <li><a href="registration/teams">Register teams</a></li>
+        <li>Create an account</li>
+        <li class="current">Register your school</li>
+        <li>Register teams</li>
     </ol>
     <h1>Register your school</h1>
     <p class="helptext">
-        Tell us about your school, even if you are registering as an individual. If you are homeschooled, indicate that below. 
+        Tell us about your school, even if you are registering as an individual. If you are homeschooled, indicate that below.
     </p>
     <form action="" method="post">
         {% csrf_token %}
-        <table>
+        <table class="wide">
             {{ form }}
         </table>
         <input type="submit" value="Register School">

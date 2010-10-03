@@ -159,15 +159,16 @@ ol.progress {
 }
 ol.progress li{
     display: inline;
-    padding: 20px 0;
-    border: 2px solid #7a0001;
-}
-ol.progress li a{
+    border: 2px solid #bbb;
     padding: 20px;
+    color: #bbb;
+    background-color: #eee;
+}
+ol.progress li.current {
+    border: 2px solid #7a0001;
     color: white;
     background-color: #7a0001;
 }
-ol.progress li.current a {
-    color: #7a0001;
-    background-color: white;
+.wide input[type=text] {
+    width: 250px;
 }

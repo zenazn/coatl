@@ -32,29 +32,20 @@ def register_account(request):
 
 @login_required
 def register_school(request):
+    if request.user.school_set.count() > 0:
+        return HttpResponseRedirect(BASE_URL_PATH + 'registration/teams')
+
     if request.method == 'POST':
-        if request.user.school_set.count() > 0:
-            school = request.user.school_set.all()[0]
-            form = forms.RegisterSchoolForm(request.POST, instance=school)
-        else:
-            school = None
-            form = forms.RegisterSchoolForm(request.POST)
+        form = forms.RegisterSchoolForm(request.POST)
         if form.is_valid():
-            if school:
-                school.save()
-            else:
-                s = models.School(**form.cleaned_data)
-                s.save()
-                s.coaches.add(request.user)
-                s.save()
-                mail.send_reg_confirmation(s)
+            s = models.School(**form.cleaned_data)
+            s.save()
+            s.coaches.add(request.user)
+            s.save()
+            mail.send_reg_confirmation(s)
             return HttpResponseRedirect(BASE_URL_PATH + "registration/teams")
     else:
-        if request.user.school_set.count() > 0:
-            school = request.user.school_set.all()[0]
-            form = forms.RegisterSchoolForm(instance=school)
-        else:
-            form = forms.RegisterSchoolForm()
+        form = forms.RegisterSchoolForm()
     context = {
         'form': form,
     }
