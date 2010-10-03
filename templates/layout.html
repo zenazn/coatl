@@ -15,6 +15,13 @@
     <div id="container">
         <div id="contentcol">
             <div id="content">
+                <div id="loginbar">
+                    {% if user.is_authenticated %}
+                    <p>You are logged in as {{ user }}. <a href="accounts/logout">Log out</a></p>
+                    {% else %}
+                    <p>You are not logged in. <a href="accounts/login">Log in</a> or <a href="registration/account">Register</a></p>
+                    {% endif %}
+                </div>
                 <h1 id="logo"><a href="./"><img src="media/images/logo2010.png" alt="Harvard-MIT Mathematics Tournament 2010" /></a></h1>
                 {% block content %}Content goes here{% endblock %}
             </div>
