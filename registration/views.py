@@ -2,7 +2,6 @@ import forms, models, mail
 from settings import BASE_URL_PATH
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
-from django.core.context_processors import csrf
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
@@ -32,7 +31,6 @@ def register_account(request):
     context = RequestContext(request, {
         'form': form,
     })
-    context.update(csrf(request))
     return render_to_response("registration/account.html", context)
 
 @login_required
@@ -55,7 +53,6 @@ def register_school(request):
     context = RequestContext(request, {
         'form': form,
     })
-    context.update(csrf(request))
     return render_to_response("registration/school.html", context)
 
 @login_required
@@ -79,7 +76,6 @@ def register_teams(request):
     context = RequestContext(request, {
         'teams': teams,
     })
-    context.update(csrf(request))
     return render_to_response("registration/teams.html", context)
 
 def index(request):

@@ -16,7 +16,6 @@
     <p style="color: red">There are errors below. Please fix them. <strong>Your data has not yet been saved</strong>.</p>
     {% endif %}
     <form action="" method="post">
-        {% csrf_token %}
         {{ teams.management_form }}
         {% for team in teams.forms %}
         <div class="team-group" style='margin-bottom: 20px'>

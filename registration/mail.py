@@ -20,5 +20,5 @@ def send_reg_confirmation(school):
         message = mail.EmailMessage(subject=subject, body=body, to=emails, bcc=(settings.DEFAULT_FROM_EMAIL,))
         messages.append(message)
 
-    connection = mail.get_connection()
+    connection = mail.SMTPConnection()
     connection.send_messages(messages)
