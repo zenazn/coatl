@@ -1,3 +1,4 @@
+from coatl.settings import BASE_URL_PATH
 from coatl.registration import forms, models
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
@@ -5,6 +6,7 @@ from django.core.context_processors import csrf
 from django.contrib import auth
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.models import User
+from django.template import RequestContext
 
 # There's a three-part registration process. First you register an account,
 # then you register your school, then you register the teams and the students
@@ -24,7 +26,7 @@ def register_account(request):
             return HttpResponseRedirect(BASE_URL_PATH + "registration/school")
     else:
         form = forms.RegisterUserForm()
-    context = {
+    context = RequestContext(request, {
         'form': form,
     }
     context.update(csrf(request))
@@ -54,7 +56,7 @@ def register_school(request):
             form = forms.RegisterSchoolForm(instance=school)
         else:
             form = forms.RegisterSchoolForm()
-    context = {
+    context = RequestContext(request, {
         'form': form,
     }
     context.update(csrf(request))
@@ -78,14 +80,14 @@ def register_teams(request):
             teams = forms.TeamFormSet(instance=school)
         else:
             teams = forms.TeamFormSet()
-    context = {
+    context = RequestContext(request, {
         'teams': teams,
     }
     context.update(csrf(request))
     return render_to_response("registration/teams.html", context)
 
 def index(request):
-    return render_to_response("registration/index.html", {})
+    return render_to_response("registration/index.html", RequestContext(request, {}))
 
 def done(request):
-    return render_to_response("registration/done.html", {})
+    return render_to_response("registration/done.html", RequestContext(request, {}))
