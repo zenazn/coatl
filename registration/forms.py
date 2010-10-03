@@ -16,6 +16,8 @@ class RegisterUserForm(forms.Form):
     """
 
     username = forms.CharField(max_length=30, min_length=3, label=_('username'))
+    first = forms.CharField(max_length=30, label=_('first name'))
+    last = forms.CharField(max_length=30, label=_('last name'))
     email1 = forms.EmailField(label=_('email address'))
     email2 = forms.EmailField(label=_('confirm email address'))
     password1 = forms.CharField(label=_('password'), widget=forms.PasswordInput())
@@ -41,6 +43,8 @@ class RegisterUserForm(forms.Form):
     def clean(self):
         return {
             'username': self.cleaned_data.get('username'),
+            'first': self.cleaned_data.get('first'),
+            'last': self.cleaned_data.get('last'),
             'email': self.cleaned_data.get('email1'),
             'password': self.cleaned_data.get('password1'),
         }

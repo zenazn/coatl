@@ -22,6 +22,9 @@ def register_account(request):
             # Create and log in the user
             User.objects.create_user(d['username'], d['email'], d['password'])
             user = auth.authenticate(username=d['username'], password=d['password'])
+            user.first_name = d['first']
+            user.last_name = d['last']
+            user.save()
             auth.login(request, user)
             return HttpResponseRedirect(BASE_URL_PATH + "registration/school")
     else:
