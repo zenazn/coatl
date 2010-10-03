@@ -9,6 +9,7 @@ SCHOOL_TYPES = (
     ('regional', _('Regional School')),
     ('public_big', _('Large Public School')),
     ('public_small', _('Small Public School')),
+    ('homeschool',_('Homeschooled')),
     ('individual', _('Individual')),
     ('other', _('Other (E-mail us)')),
 )
