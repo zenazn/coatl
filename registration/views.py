@@ -28,7 +28,7 @@ def register_account(request):
         form = forms.RegisterUserForm()
     context = RequestContext(request, {
         'form': form,
-    }
+    })
     context.update(csrf(request))
     return render_to_response("registration/account.html", context)
 
@@ -47,19 +47,11 @@ def register_school(request):
             mail.send_reg_confirmation(s)
             return HttpResponseRedirect(BASE_URL_PATH + "registration/teams")
     else:
-<<<<<<< HEAD
         form = forms.RegisterSchoolForm()
-    context = {
-=======
-        if request.user.school_set.count() > 0:
-            school = request.user.school_set.all()[0]
-            form = forms.RegisterSchoolForm(instance=school)
-        else:
-            form = forms.RegisterSchoolForm()
+
     context = RequestContext(request, {
->>>>>>> ffa8b7d2abe76fd0b3930b47bf750361be17e6ed
         'form': form,
-    }
+    })
     context.update(csrf(request))
     return render_to_response("registration/school.html", context)
 
@@ -83,7 +75,7 @@ def register_teams(request):
             teams = forms.TeamFormSet()
     context = RequestContext(request, {
         'teams': teams,
-    }
+    })
     context.update(csrf(request))
     return render_to_response("registration/teams.html", context)
 
