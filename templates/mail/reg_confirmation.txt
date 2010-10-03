@@ -1,0 +1,24 @@
+Hello {{ user.get_full_name }},
+
+Thank you for registering your school for the November Harvard-MIT Mathematics
+Tournament 2010.  Here's the information we have on file for your school:
+
+Name: {{ school.name }}
+Address: {{ school.address }}
+Type: {{ school.school_type }}
+
+If you need to update this information, just go to
+http://hmmt.mit.edu/november/registration
+
+Feel free to contact us at hmmt-request@mit.edu if you have any questions.
+
+Thanks!
+
+Winston Luo and Tim Reynolds
+HMMT 2010 Tournament Directors
+
+
+---
+You're recieving this email because you registered a school for the Harvard-MIT
+Math Tournament. If you believe you are recieving this email in error, please
+contact us at hmmt-request@mit.edu

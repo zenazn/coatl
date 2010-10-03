@@ -1,4 +1,4 @@
-from coatl.registration import forms, models
+from coatl.registration import forms, models, mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf
@@ -47,6 +47,7 @@ def register_school(request):
                 s.save()
                 s.coaches.add(request.user)
                 s.save()
+                mail.send_reg_confirmation(s)
             return HttpResponseRedirect(BASE_URL_PATH + "registration/teams")
     else:
         if request.user.school_set.count() > 0:

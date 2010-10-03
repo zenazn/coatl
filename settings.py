@@ -69,5 +69,9 @@ INSTALLED_APPS = (
     'coatl.competition',
 )
 
+# Email stuff
+DEFAULT_FROM_EMAIL = 'Harvard-MIT Mathematics Tournament <hmmt-request@mit.edu>'
+EMAIL_PREFIX = '[HMMT] '
+
 # Login stuff
 LOGIN_REDIRECT_URL = '/registration/teams/'
