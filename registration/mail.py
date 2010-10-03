@@ -22,4 +22,4 @@ def send_reg_confirmation(school):
         messages.append(message)
 
     connection = mail.get_connection()
-    connection.send_messages(message)
+    connection.send_messages(messages)
