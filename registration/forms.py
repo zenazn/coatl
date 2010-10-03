@@ -59,7 +59,8 @@ class BaseMathleteFormSet(forms_models.BaseInlineFormSet):
         if hasattr(self, 'cleaned_data'):
             num_mathletes = len(filter(bool, self.cleaned_data))
             if num_mathletes > 0 and (num_mathletes > 6 or num_mathletes < 4):
-                raise forms.ValidationError, _("Each team must have between 4 and 6 mathletes")
+                pass
+                #raise forms.ValidationError, _("Each team must have between 4 and 6 mathletes")
 
 MathleteFormSet = inlineformset_factory(models.Team, models.Mathlete, formset=BaseMathleteFormSet, max_num=6, extra=6, fields=('first', 'last', 'alias', 'round1', 'round2'))
 
