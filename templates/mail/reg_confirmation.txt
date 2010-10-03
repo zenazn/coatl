@@ -5,7 +5,7 @@ Tournament 2010.  Here's the information we have on file for your school:
 
 Name: {{ school.name }}
 Address: {{ school.address }}
-Type: {{ school.school_type }}
+Type: {{ school.get_school_type_display }}
 
 If you need to update this information, just go to
 http://hmmt.mit.edu/november/registration
