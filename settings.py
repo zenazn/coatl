@@ -31,7 +31,7 @@ USE_L10N = True
 # URL prefix for admin media -- CSS, JavaScript and images. Make sure to use a
 # trailing slash.
 # Examples: "http://foo.com/media/", "/media/".
-ADMIN_MEDIA_PREFIX = '/admin/media/'
+# ADMIN_MEDIA_PREFIX = '/admin/media/'
 
 # List of callables that know how to import templates from various sources.
 TEMPLATE_LOADERS = (
@@ -72,4 +72,5 @@ DEFAULT_FROM_EMAIL = 'Harvard-MIT Mathematics Tournament <hmmt-request@mit.edu>'
 EMAIL_PREFIX = '[HMMT] '
 
 # Login stuff
-LOGIN_REDIRECT_URL = '/registration/teams/'
+LOGIN_URL = '/february/accounts/login/'
+LOGIN_REDIRECT_URL = '/february/registration/teams/'
