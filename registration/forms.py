@@ -3,8 +3,8 @@ from django.forms import models as forms_models
 from django.forms.models import modelformset_factory, inlineformset_factory
 from django.forms.formsets import DELETION_FIELD_NAME
 from django.contrib.auth.models import User
-from coatl.registration import models
 from django.utils.translation import ugettext_lazy as _
+import models
 
 class RegisterUserForm(forms.Form):
     """

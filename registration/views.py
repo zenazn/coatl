@@ -1,5 +1,5 @@
-from coatl.settings import BASE_URL_PATH
-from coatl.registration import forms, models, mail
+import forms, models, mail
+from settings import BASE_URL_PATH
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.core.context_processors import csrf

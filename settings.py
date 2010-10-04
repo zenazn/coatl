@@ -48,7 +48,7 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
 )
 
-ROOT_URLCONF = 'coatl.urls'
+ROOT_URLCONF = 'urls'
 
 TEMPLATE_DIRS = (
     SITE_ROOT + 'templates/',
@@ -65,8 +65,8 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.admin',
-    'coatl.registration',
-    'coatl.competition',
+    'registration',
+    'competition',
 )
 
 # Email stuff

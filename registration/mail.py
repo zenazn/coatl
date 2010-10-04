@@ -1,5 +1,4 @@
-import settings
-from registration import models
+import settings, models
 from django.core import mail
 from django.template import loader, Context
 

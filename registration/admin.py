@@ -1,5 +1,5 @@
 from django.contrib import admin
-from coatl.registration import models
+import models
 
 class SchoolAdmin(admin.ModelAdmin):
     list_display = ('name', 'school_type', 'paid', 'payment', 'comment')

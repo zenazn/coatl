@@ -1,5 +1,5 @@
 from django.conf.urls.defaults import *
-from coatl.registration import views
+import views
 
 urlpatterns = patterns('',
     (r'^account', views.register_account),
