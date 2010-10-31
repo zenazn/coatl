@@ -67,6 +67,7 @@ INSTALLED_APPS = (
     'django.contrib.admin',
     'registration',
     'competition',
+    'abacus',
 )
 
 # Email stuff
