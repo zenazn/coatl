@@ -92,3 +92,6 @@ class User(models.Model):
     login = models.CharField(max_length=64)
     password = models.CharField(max_length=64)
     location = models.CharField(max_length=255)
+
+    class Meta:
+        db_table = 'users'
