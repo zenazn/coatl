@@ -39,6 +39,9 @@ class School(models.Model):
         db_table = 'schools'
 
 class Team(models.Model):
+    # Backwords compatibility sucks.
+    number = models.AutoField(primary_key=True)
+
     name = models.CharField(max_length=255, unique=True)
     shortname = models.CharField(max_length=15, help_text=_('Nickname for the guts round scoreboard'), unique=True)
     school = models.ForeignKey('School', db_column='schoolid')
@@ -83,3 +86,9 @@ class Mathlete(models.Model):
 
     class Meta:
         db_table = 'mathletes'
+
+# For abacus
+class User(models.Model):
+    login = models.CharField(max_length=64)
+    password = models.CharField(max_length=64)
+    location = models.CharField(max_length=255)
