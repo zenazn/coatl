@@ -61,7 +61,11 @@ class RegisterSchoolForm(forms.ModelForm):
 class BaseMathleteFormSet(forms_models.BaseInlineFormSet):
     def clean(self):
         if hasattr(self, 'cleaned_data'):
-            num_mathletes = len(filter(bool, self.cleaned_data))
+            data = filter(bool, self.cleaned_data)
+            #for mathletes in data:
+                #if mathletes.round1 == mathletes.round2:
+                  #raise forms.ValidationError, _("A Mathlete may not take the same test twice!")
+            num_mathletes = len(data)
             if num_mathletes > 0 and (num_mathletes > 6 or num_mathletes < 4):
                 pass
                 #raise forms.ValidationError, _("Each team must have between 4 and 6 mathletes")
