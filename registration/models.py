@@ -89,9 +89,9 @@ class Mathlete(models.Model):
 
 # For abacus
 class User(models.Model):
-    login = models.CharField(max_length=64)
-    password = models.CharField(max_length=64)
-    location = models.CharField(max_length=255)
+    login = models.CharField(max_length=64, null=True, unique=True)
+    password = models.CharField(max_length=64, null=True)
+    location = models.CharField(max_length=255, null=True, blank=True)
 
     class Meta:
         db_table = 'users'
