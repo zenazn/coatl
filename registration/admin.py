@@ -2,7 +2,7 @@ from django.contrib import admin
 import models
 
 class SchoolAdmin(admin.ModelAdmin):
-    list_display = ('name', 'school_type', 'paid', 'payment', 'comment')
+    list_display = ('name', 'school_type', 'paid', 'address', 'payment', 'comment')
     list_filter = ('paid', 'school_type')
     search_fields = ('name', 'comment')
 
