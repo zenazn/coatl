@@ -17,7 +17,7 @@ class Round(models.Model):
         db_table = 'rounds'
 
 class Problem(models.Model):
-    round = models.ForeignKey('Round')
+    round = models.ForeignKey('Round', db_column='roundid')
     number = models.IntegerField(verbose_name="Problem Number")
     points = models.IntegerField()
 
