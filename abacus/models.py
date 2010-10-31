@@ -10,8 +10,8 @@ class Lock(models.Model):
     scorer = models.ForeignKey('User', db_column='scorerid', null=True)
     round = models.ForeignKey('competition.Round', db_column='roundid', null=True)
     solver = models.ForeignKey('registration.Mathlete', db_column='solverid', null=True)
-    start = models.DateField(auto_now=True)
-    end = models.DateField()
+    start = models.DateField(auto_now=True, null=True)
+    end = models.DateField(null=True)
 
     class Meta:
         db_table = 'locks'
@@ -19,7 +19,7 @@ class Lock(models.Model):
 class Message(models.Model):
     scorer = models.ForeignKey('User', db_column='scorerid', null=True)
     msg = models.TextField(null=True)
-    time = models.DateField(auto_now=True)
+    time = models.DateField(auto_now=True, null=True)
 
     class Meta:
         db_table = 'messages'
@@ -28,7 +28,7 @@ class Score(models.Model):
     problem = models.ForeignKey('competition.Problem', db_column='problemid', null=True)
     solver = models.ForeignKey('registration.Mathlete', db_column='solverid', null=True)
     result = models.CharField(max_length=1, choices=SCORE_CHOICES, null=True)
-    time = models.DateField(auto_now=True)
+    time = models.DateField(auto_now=True, null=True)
     scorer = models.ForeignKey('User', db_column='scorerid', null=True)
 
     class Meta:
@@ -38,7 +38,7 @@ class Update(models.Model):
     round = models.ForeignKey('competition.Round', db_column='roundid', null=True)
     solver = models.ForeignKey('registration.Mathlete', db_column='solverid', null=True)
     color = models.IntegerField(null=True)
-    time = models.DateField(auto_now=True)
+    time = models.DateField(auto_now=True, null=True)
 
     class Meta:
         db_table = 'updates'
