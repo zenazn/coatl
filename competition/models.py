@@ -12,7 +12,7 @@ class Round(models.Model):
 
     def __str__(self):
         return self.name
-    
+
     class Meta:
         db_table = 'rounds'
 
@@ -20,13 +20,13 @@ class Problem(models.Model):
     round = models.ForeignKey('Round')
     number = models.IntegerField(verbose_name="Problem Number")
     points = models.IntegerField()
-    
+
     statement = models.TextField()
     answer = models.TextField()
-    solution = models.TextField() 
+    solution = models.TextField()
 
     def __str__(self):
         return "%s Question %d" % (self.round.name, self.number)
-    
+
     class Meta:
         db_table = 'problems'
