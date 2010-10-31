@@ -9,4 +9,5 @@ urlpatterns = patterns('',
     (r'^registration/', include('registration.urls')),
     (r'^admin/', include(admin.site.urls)),
     (r'^$', 'registration.views.index'),
+    (r'^february/$', 'registration.views.index'),
 )
