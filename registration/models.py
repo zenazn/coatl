@@ -29,8 +29,8 @@ class School(models.Model):
 
     coaches = models.ManyToManyField(auth.User, blank=True)
 
-    created = models.DateField(auto_now_add=True, verbose_name=_('created at'))
-    lastupdate = models.DateField(auto_now=True, verbose_name=_('last updated at'))
+    created = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+    lastupdate = models.DateTimeField(auto_now=True, verbose_name=_('last updated at'))
 
     def __str__(self):
         return self.name
@@ -51,8 +51,8 @@ class Team(models.Model):
 
     division = models.CharField(max_length=1, choices=TEAM_DIVISIONS)
 
-    created = models.DateField(auto_now_add=True, verbose_name=_('created at'))
-    lastupdate = models.DateField(auto_now=True, verbose_name=_('last updated at'))
+    created = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+    lastupdate = models.DateTimeField(auto_now=True, verbose_name=_('last updated at'))
 
     def __str__(self):
         return self.name
@@ -75,8 +75,8 @@ class Mathlete(models.Model):
 
     comment = models.TextField(null=True, blank=True)
 
-    created = models.DateField(auto_now_add=True, verbose_name=_('created at'))
-    lastupdate = models.DateField(auto_now=True, verbose_name=_('last updated at'))
+    created = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+    lastupdate = models.DateTimeField(auto_now=True, verbose_name=_('last updated at'))
 
     def __str__(self):
         if self.alias:
