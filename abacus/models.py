@@ -28,7 +28,7 @@ class Message(models.Model):
 class Score(models.Model):
     problem = models.ForeignKey('competition.Problem', db_column='problemid', null=True)
     solver = models.ForeignKey('registration.Mathlete', db_column='solverid', null=True)
-    result = models.CharField(max_length=1, choices=SCORE_CHOICES, null=True)
+    result = models.CharField(max_length=5, choices=SCORE_CHOICES, null=True)
     time = fields.TimestampField(auto_now=True)
     scorer = models.ForeignKey('User', db_column='scorerid', null=True)
 
