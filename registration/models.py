@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import models as auth
 from competition import models as competition
 from django.utils.translation import ugettext_lazy as _
+import fields
 
 SCHOOL_TYPES = (
     ('private', _('Private School')),
@@ -71,7 +72,7 @@ class Mathlete(models.Model):
     round1 = models.ForeignKey('competition.Round', db_column='round1', related_name='mathelete_round1_set', verbose_name=_('first round'))
     round2 = models.ForeignKey('competition.Round', db_column='round2', related_name='mathelete_round2_set', verbose_name=_('second round'))
 
-    regstatus = models.BooleanField(default=False,verbose_name=_('registration status'))
+    regstatus = fields.YNField(default=False, verbose_name=_('registration status'))
 
     comment = models.TextField(null=True, blank=True)
 
