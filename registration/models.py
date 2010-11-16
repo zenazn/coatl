@@ -36,6 +36,10 @@ class School(models.Model):
     def __str__(self):
         return self.name
 
+    def team_count(self):
+        return self.team_set.count()
+    team_count.short_description = "Team Count"
+
     class Meta:
         db_table = 'schools'
 
@@ -57,6 +61,10 @@ class Team(models.Model):
 
     def __str__(self):
         return self.name
+
+    def mathlete_count(self):
+        return self.mathlete_set.count()
+    mathlete_count.short_description = "Mathlete Count"
 
     class Meta:
         db_table = 'teams'
