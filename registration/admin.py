@@ -28,8 +28,8 @@ class TeamAdmin(admin.ModelAdmin):
 admin.site.register(models.Team, TeamAdmin)
 
 class MathleteAdmin(admin.ModelAdmin):
-    list_display = ('first', 'last', 'alias', 'school', 'round1', 'round2', 'comment')
-    list_filter = ('round1', 'round2', 'school')
+    list_display = ('first', 'last', 'alias', 'school', 'subject', 'comment')
+    list_filter = ('subject', 'school')
     search_fields = ('first', 'last', 'alias', 'school__name', 'team__name', 'team__shortname', 'comment')
 
 admin.site.register(models.Mathlete, MathleteAdmin)

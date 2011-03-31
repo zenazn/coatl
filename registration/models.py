@@ -77,8 +77,10 @@ class Mathlete(models.Model):
     school = models.ForeignKey('School', db_column='schoolid')
     team = models.ForeignKey('Team', null=True, blank=True, db_column='teamid')
 
-    round1 = models.ForeignKey('competition.Round', db_column='round1', related_name='mathelete_round1_set', verbose_name=_('first round'))
-    round2 = models.ForeignKey('competition.Round', db_column='round2', related_name='mathelete_round2_set', verbose_name=_('second round'))
+    #round1 = models.ForeignKey('competition.Round', db_column='round1', related_name='mathelete_round1_set', verbose_name=_('first round'))
+    #round2 = models.ForeignKey('competition.Round', db_column='round2', related_name='mathelete_round2_set', verbose_name=_('second round'))
+
+    subject = models.ForeignKey('competition.Round_Scoring', db_column='subject', related_name='mathlete_subject_set', verbose_name=_('subject test'), limit_choices_to = {'group': 'subject'})
 
     regstatus = fields.YNField(default=False, verbose_name=_('registration status'))
 

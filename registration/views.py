@@ -12,6 +12,7 @@ from django.template import RequestContext
 # on your teams.
 
 def register_account(request):
+    return render_to_response("registration/closed.html")
     if request.user.is_authenticated():
         return HttpResponseRedirect(BASE_URL_PATH + "registration/school")
     if request.method == 'POST':

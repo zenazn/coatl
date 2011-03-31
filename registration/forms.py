@@ -70,7 +70,7 @@ class BaseMathleteFormSet(forms_models.BaseInlineFormSet):
                 pass
                 #raise forms.ValidationError, _("Each team must have between 4 and 6 mathletes")
 
-MathleteFormSet = inlineformset_factory(models.Team, models.Mathlete, formset=BaseMathleteFormSet, max_num=8, extra=8, fields=('first', 'last', 'alias', 'round1', 'round2'))
+MathleteFormSet = inlineformset_factory(models.Team, models.Mathlete, formset=BaseMathleteFormSet, max_num=8, extra=8, fields=('first', 'last', 'alias', 'subject'))
 
 class BaseTeamFormSet(forms_models.BaseInlineFormSet):
     def add_fields(self, form, index):
@@ -134,5 +134,5 @@ class BaseTeamFormSet(forms_models.BaseInlineFormSet):
                             o.school = school
                             o.save()
 
-TeamFormSet = inlineformset_factory(models.School, models.Team, formset=BaseTeamFormSet, max_num=3, fields=('name', 'shortname', 'proctor', 'division'))
+TeamFormSet = inlineformset_factory(models.School, models.Team, formset=BaseTeamFormSet, max_num=3, extra=0, fields=('name', 'shortname', 'proctor', 'division'))
 
